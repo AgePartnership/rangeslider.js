@@ -301,7 +301,7 @@
 
         this.handleDimension    = getDimension(this.$handle[0], 'offset' + ucfirst(this.DIMENSION));
         this.rangeDimension     = getDimension(this.$range[0], 'offset' + ucfirst(this.DIMENSION));
-        this.maxHandlePos       = this.rangeDimension - this.handleDimension;
+        this.maxHandlePos       = this.rangeDimension;
         this.grabPos            = this.handleDimension / 2;
         this.position           = this.getPositionFromValue(this.value);
 
@@ -385,8 +385,8 @@
         newPos = this.getPositionFromValue(value);
 
         // Update ui
-        this.$fill[0].style[this.DIMENSION] = (newPos + this.grabPos) + 'px';
-        this.$handle[0].style[this.DIRECTION_STYLE] = newPos + 'px';
+        this.$fill[0].style[this.DIMENSION] = newPos + 'px';
+        this.$handle[0].style[this.DIRECTION_STYLE] = newPos - (this.handleDimension / 2) + 'px';
         this.setValue(value);
 
         // Update globals
